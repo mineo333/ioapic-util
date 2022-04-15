@@ -1,1 +1,0 @@
-cmd_/home/mineo333/ioapic/ioapic_util.ko := ld -r -m elf_x86_64 --build-id=sha1  -T scripts/module.lds -o /home/mineo333/ioapic/ioapic_util.ko /home/mineo333/ioapic/ioapic_util.o /home/mineo333/ioapic/ioapic_util.mod.o;  true
