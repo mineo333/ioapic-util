@@ -1,5 +1,5 @@
 # IOAPIC Util
-The point of this repo is to dump information about the IOAPIC register
+The point of this repo is to dump information about the IOAPIC in the Linux Kernel
 
 # Using this utility
 
