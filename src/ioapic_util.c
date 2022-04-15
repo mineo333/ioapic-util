@@ -27,8 +27,9 @@ static void __iomem* io_apic_base; //this is set with an ioremap of io_apic_addr
 
 unsigned int read_io_apic_reg(char offset){
     writel((unsigned int)offset, io_apic_base + IOREGSEL);
+    barrier(); //we actually need a barrier here because later loads can be reordered with earlier stores. (Intel Vol 3A 8-9)
 
-    return readl(io_apic_base + IOREGSEL);
+    return readl(io_apic_base + IOWIN);
 }
 
 
@@ -36,7 +37,7 @@ int ioapic_util_init(void)
 {
     int i;
     io_apic_base = ioremap(io_apic_addr, 0xc); //its pretty important that we do this so that memory is not cached. 
-    pr_info("Version: %x\n", read_io_apic_reg(IOAPICVER));
+    pr_info("Version: %x\n", read_io_apic_reg(IOAPICID));
     for(i = 0; i<MAX_REDIR_ENTRIES; i++){
         unsigned long redir = read_io_apic_reg(IOAPICREDTBL(i)); 
         redir |= ((unsigned long)read_io_apic_reg(IOAPICREDTBL(i)+1) << 32); //get the upper 32 bits
@@ -45,7 +46,7 @@ int ioapic_util_init(void)
         
     }
 
-    
+
 
     
     
