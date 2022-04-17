@@ -1,5 +1,7 @@
 # IOAPIC Util
-The point of this repo is to dump information about the IOAPIC in the Linux Kernel
+The point of this repo is to dump information about the IOAPIC in the Linux Kernel.
+
+This utility was built for kernel version `5.13.0-39-generic`, but it should still work with later kernel versions.
 
 # Using this utility
 
@@ -16,4 +18,6 @@ This can be done by doing the following in any terminal:
 
 To change the `io_apic_addr`, open `ioapic_util.c` and change the static variable near the top.
 
-Then compile this utility using `make` and run `sudo insmod ioapic_util.ko`
+Then compile this utility using `make` and run `sudo insmod ioapic_util.ko`.
+
+The information about the IO-APIC will then be placed in the kernel ring buffer which may be access using `sudo dmesg`.
