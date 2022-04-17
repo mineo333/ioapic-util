@@ -10,15 +10,9 @@ $(MODULE_NAME)-y := $(patsubst %.o, src/%.o, $(OBJ))
 
 ############################ directories ############################
 
-
-
 KDIR := /lib/modules/$(shell uname -r)/build #kernel source
 
 BUILD_DIR := $(PWD)/bin #output directory
-
-############################ options ############################
-
-VICTIM_FILE := /home/mineo333/libc-2.33.so # #change this to change the target file
 
 ############################ Kbuild options ############################
 
